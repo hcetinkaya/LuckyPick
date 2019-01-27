@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="luckypick" default="all">
+
+
+    <property file="luckypick.properties"/>
+    <!-- Uncomment the following property if no tests compilation is needed -->
+    <!--
+    <property name="skip.tests" value="true"/>
+     -->
+
+    <!-- Compiler options -->
+
+    <property name="compiler.debug" value="on"/>
+    <property name="compiler.generate.no.warnings" value="off"/>
+    <property name="compiler.args" value=""/>
+    <property name="compiler.max.memory" value="700m"/>
+    <patternset id="ignored.files">
+        <exclude name="**/*.hprof/**"/>
+        <exclude name="**/*.pyc/**"/>
+        <exclude name="**/*.pyo/**"/>
+        <exclude name="**/*.rbc/**"/>
+        <exclude name="**/*.yarb/**"/>
+        <exclude name="**/*~/**"/>
+        <exclude name="**/.DS_Store/**"/>
+        <exclude name="**/.git/**"/>
+        <exclude name="**/.hg/**"/>
+        <exclude name="**/.svn/**"/>
+        <exclude name="**/CVS/**"/>
+        <exclude name="**/__pycache__/**"/>
+        <exclude name="**/_svn/**"/>
+        <exclude name="**/vssver.scc/**"/>
+        <exclude name="**/vssver2.scc/**"/>
+    </patternset>
+    <patternset id="library.patterns">
+        <include name="*.egg"/>
+        <include name="*.jar"/>
+        <include name="*.ear"/>
+        <include name="*.swc"/>
+        <include name="*.war"/>
+        <include name="*.zip"/>
+        <include name="*.ane"/>
+    </patternset>
+    <patternset id="compiler.resources">
+        <exclude name="**/?*.java"/>
+        <exclude name="**/?*.form"/>
+        <exclude name="**/?*.class"/>
+        <exclude name="**/?*.groovy"/>
+        <exclude name="**/?*.scala"/>
+        <exclude name="**/?*.flex"/>
+        <exclude name="**/?*.kt"/>
+        <exclude name="**/?*.clj"/>
+    </patternset>
+
+    <!-- JDK definitions -->
+
+    <property name="jdk.bin.11" value="${jdk.home.11}/bin"/>
+    <path id="jdk.classpath.11">
+        <fileset dir="${jdk.home.11}">
+            <include name="/legal/java.base"/>
+            <include name="/legal/java.compiler"/>
+            <include name="/legal/java.datatransfer"/>
+            <include name="/legal/java.desktop"/>
+            <include name="/legal/java.instrument"/>
+            <include name="/legal/java.logging"/>
+            <include name="/legal/java.management"/>
+            <include name="/legal/java.management.rmi"/>
+            <include name="/legal/java.naming"/>
+            <include name="/legal/java.net.http"/>
+            <include name="/legal/java.prefs"/>
+            <include name="/legal/java.rmi"/>
+            <include name="/legal/java.scripting"/>
+            <include name="/legal/java.se"/>
+            <include name="/legal/java.security.jgss"/>
+            <include name="/legal/java.security.sasl"/>
+            <include name="/legal/java.smartcardio"/>
+            <include name="/legal/java.sql"/>
+            <include name="/legal/java.sql.rowset"/>
+            <include name="/legal/java.transaction.xa"/>
+            <include name="/legal/java.xml"/>
+            <include name="/legal/java.xml.crypto"/>
+            <include name="/legal/jdk.accessibility"/>
+            <include name="/legal/jdk.aot"/>
+            <include name="/legal/jdk.attach"/>
+            <include name="/legal/jdk.charsets"/>
+            <include name="/legal/jdk.compiler"/>
+            <include name="/legal/jdk.crypto.cryptoki"/>
+            <include name="/legal/jdk.crypto.ec"/>
+            <include name="/legal/jdk.crypto.mscapi"/>
+            <include name="/legal/jdk.dynalink"/>
+            <include name="/legal/jdk.editpad"/>
+            <include name="/legal/jdk.hotspot.agent"/>
+            <include name="/legal/jdk.httpserver"/>
+            <include name="/legal/jdk.internal.ed"/>
+            <include name="/legal/jdk.internal.jvmstat"/>
+            <include name="/legal/jdk.internal.le"/>
+            <include name="/legal/jdk.internal.opt"/>
+            <include name="/legal/jdk.internal.vm.ci"/>
+            <include name="/legal/jdk.internal.vm.compiler"/>
+            <include name="/legal/jdk.internal.vm.compiler.management"/>
+            <include name="/legal/jdk.jartool"/>
+            <include name="/legal/jdk.javadoc"/>
+            <include name="/legal/jdk.jcmd"/>
+            <include name="/legal/jdk.jconsole"/>
+            <include name="/legal/jdk.jdeps"/>
+            <include name="/legal/jdk.jdi"/>
+            <include name="/legal/jdk.jdwp.agent"/>
+            <include name="/legal/jdk.jfr"/>
+            <include name="/legal/jdk.jlink"/>
+            <include name="/legal/jdk.jshell"/>
+            <include name="/legal/jdk.jsobject"/>
+            <include name="/legal/jdk.jstatd"/>
+            <include name="/legal/jdk.localedata"/>
+            <include name="/legal/jdk.management"/>
+            <include name="/legal/jdk.management.agent"/>
+            <include name="/legal/jdk.management.jfr"/>
+            <include name="/legal/jdk.naming.dns"/>
+            <include name="/legal/jdk.naming.rmi"/>
+            <include name="/legal/jdk.net"/>
+            <include name="/legal/jdk.pack"/>
+            <include name="/legal/jdk.rmic"/>
+            <include name="/legal/jdk.scripting.nashorn"/>
+            <include name="/legal/jdk.scripting.nashorn.shell"/>
+            <include name="/legal/jdk.sctp"/>
+            <include name="/legal/jdk.security.auth"/>
+            <include name="/legal/jdk.security.jgss"/>
+            <include name="/legal/jdk.unsupported"/>
+            <include name="/legal/jdk.unsupported.desktop"/>
+            <include name="/legal/jdk.xml.dom"/>
+            <include name="/legal/jdk.zipfs"/>
+        </fileset>
+    </path>
+
+    <property name="project.jdk.home" value="${jdk.home.11}"/>
+    <property name="project.jdk.bin" value="${jdk.bin.11}"/>
+    <property name="project.jdk.classpath" value="jdk.classpath.11"/>
+
+
+    <!-- Project Libraries -->
+
+    <path id="library.javafx-swt.classpath">
+        <pathelement location="${javafx.home}/lib/javafx-swt.jar"/>
+        <pathelement location="${javafx.home}/lib/javafx.base.jar"/>
+        <pathelement location="${javafx.home}/lib/javafx.controls.jar"/>
+        <pathelement location="${javafx.home}/lib/javafx.fxml.jar"/>
+        <pathelement location="${javafx.home}/lib/javafx.graphics.jar"/>
+        <pathelement location="${javafx.home}/lib/javafx.media.jar"/>
+        <pathelement location="${javafx.home}/lib/javafx.swing.jar"/>
+        <pathelement location="${javafx.home}/lib/javafx.web.jar"/>
+    </path>
+
+
+    <!-- Global Libraries -->
+    <!-- Register Custom Compiler Taskdefs -->
+    <property name="javac2.home" value="${idea.home}/lib"/>
+    <path id="javac2.classpath">
+        <fileset dir="${javac2.home}">
+            <include name="javac2.jar"/>
+            <include name="jdom.jar"/>
+            <include name="asm-all*.jar"/>
+            <include name="jgoodies-forms.jar"/>
+        </fileset>
+    </path>
+    <target name="register.custom.compilers">
+        <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+        <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions"
+                 classpathref="javac2.classpath"/>
+    </target>
+
+    <!-- Modules -->
+
+
+    <!-- Module LuckyPick -->
+
+    <dirname property="module.luckypick.basedir" file="${ant.file}"/>
+
+
+    <property name="module.jdk.home.luckypick" value="${project.jdk.home}"/>
+    <property name="module.jdk.bin.luckypick" value="${project.jdk.bin}"/>
+    <property name="module.jdk.classpath.luckypick" value="${project.jdk.classpath}"/>
+
+    <property name="compiler.args.luckypick" value="-encoding UTF-8 -source 10 -target 10 ${compiler.args}"/>
+
+    <property name="luckypick.output.dir" value="${module.luckypick.basedir}/out/production/LuckyPick"/>
+    <property name="luckypick.testoutput.dir" value="${module.luckypick.basedir}/out/test/LuckyPick"/>
+
+    <path id="luckypick.module.bootclasspath">
+        <!-- Paths to be included in compilation bootclasspath -->
+    </path>
+
+    <path id="luckypick.module.production.classpath">
+        <path refid="${module.jdk.classpath.luckypick}"/>
+        <path refid="library.javafx-swt.classpath"/>
+    </path>
+
+    <path id="luckypick.runtime.production.module.classpath">
+        <pathelement location="${luckypick.output.dir}"/>
+        <path refid="library.javafx-swt.classpath"/>
+    </path>
+
+    <path id="luckypick.module.classpath">
+        <path refid="${module.jdk.classpath.luckypick}"/>
+        <pathelement location="${luckypick.output.dir}"/>
+        <path refid="library.javafx-swt.classpath"/>
+    </path>
+
+    <path id="luckypick.runtime.module.classpath">
+        <pathelement location="${luckypick.testoutput.dir}"/>
+        <pathelement location="${luckypick.output.dir}"/>
+        <path refid="library.javafx-swt.classpath"/>
+    </path>
+
+
+    <patternset id="excluded.from.module.luckypick">
+        <patternset refid="ignored.files"/>
+    </patternset>
+
+    <patternset id="excluded.from.compilation.luckypick">
+        <patternset refid="excluded.from.module.luckypick"/>
+    </patternset>
+
+    <path id="luckypick.module.sourcepath">
+        <dirset dir="${module.luckypick.basedir}">
+            <include name="src"/>
+            <include name="res"/>
+        </dirset>
+    </path>
+
+
+    <target name="compile.module.luckypick" depends="compile.module.luckypick.production,compile.module.luckypick.tests"
+            description="Compile module LuckyPick"/>
+
+    <target name="compile.module.luckypick.production" depends="register.custom.compilers"
+            description="Compile module LuckyPick; production classes">
+        <mkdir dir="${luckypick.output.dir}"/>
+        <javac2 destdir="${luckypick.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}"
+                memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.luckypick}/javac">
+            <compilerarg line="${compiler.args.luckypick}"/>
+            <bootclasspath refid="luckypick.module.bootclasspath"/>
+            <classpath refid="luckypick.module.production.classpath"/>
+            <src refid="luckypick.module.sourcepath"/>
+            <patternset refid="excluded.from.compilation.luckypick"/>
+        </javac2>
+
+        <copy todir="${luckypick.output.dir}">
+            <fileset dir="${module.luckypick.basedir}/src">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+            <fileset dir="${module.luckypick.basedir}/res">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="compile.module.luckypick.tests"
+            depends="register.custom.compilers,compile.module.luckypick.production"
+            description="compile module LuckyPick; test classes" unless="skip.tests"/>
+
+    <target name="clean.module.luckypick" description="cleanup module">
+        <delete dir="${luckypick.output.dir}"/>
+        <delete dir="${luckypick.testoutput.dir}"/>
+    </target>
+
+    <target name="init" description="Build initialization">
+        <!-- Perform any build initialization in this target -->
+    </target>
+
+    <target name="clean" depends="clean.module.luckypick" description="cleanup all"/>
+
+    <target name="build.modules" depends="init, clean, compile.module.luckypick" description="build all modules"/>
+
+    <target name="all" depends="build.modules" description="build all"/>
+</project>
